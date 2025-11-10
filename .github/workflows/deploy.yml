@@ -52,7 +52,7 @@ jobs:
             echo "Creating new stack..."
             aws cloudformation create-stack \
               --stack-name ${{ env.STACK_NAME }} \
-              --template-body file://infrastructure/cloudformation-template-namecheap-dns.yaml \
+              --template-body file://infrastructure/cloudformation-template-no-cert.yaml \
               --capabilities CAPABILITY_IAM \
               --parameters \
                 ParameterKey=DomainName,ParameterValue=mrandall.me \
@@ -64,7 +64,7 @@ jobs:
             echo "Updating existing stack..."
             aws cloudformation update-stack \
               --stack-name ${{ env.STACK_NAME }} \
-              --template-body file://infrastructure/cloudformation-template-namecheap-dns.yaml \
+              --template-body file://infrastructure/cloudformation-template-no-cert.yaml \
               --capabilities CAPABILITY_IAM \
               --parameters \
                 ParameterKey=DomainName,ParameterValue=mrandall.me \
