@@ -1,0 +1,126 @@
+.navigation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: var(--bg-white);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.nav-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-black);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  letter-spacing: 0.05em;
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--text-black);
+  padding: 4px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-link {
+  background: none;
+  border: none;
+  color: var(--text-gray);
+  font-size: 0.95rem;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--text-black);
+}
+
+.nav-link.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+  .nav-content {
+    padding: 16px;
+  }
+
+  .nav-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    position: fixed;
+    top: 57px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-white);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav-menu-open {
+    max-height: 400px;
+  }
+
+  .nav-menu li {
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link {
+    display: block;
+    width: 100%;
+    text-align: left;
+    padding: 16px 20px;
+    font-size: 1rem;
+  }
+
+  .nav-link.active::after {
+    bottom: 15px;
+    left: 20px;
+    right: auto;
+    width: 3px;
+    height: 20px;
+  }
+}

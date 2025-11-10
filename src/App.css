@@ -1,0 +1,44 @@
+.app {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Minimal card utility */
+.card {
+  background: var(--bg-white);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--accent-color);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Accent text utility */
+.accent-text {
+  color: var(--accent-color);
+}
+
+/* Section spacing - more compact */
+section {
+  position: relative;
+  padding: 80px 20px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 50px 16px 40px;
+  }
+}
+

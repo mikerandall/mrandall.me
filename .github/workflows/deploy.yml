@@ -1,0 +1,156 @@
+name: Deploy to AWS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+env:
+  AWS_REGION: us-east-1
+  STACK_NAME: mrandall-portfolio
+  NODE_VERSION: '20'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    permissions:
+      id-token: write
+      contents: read
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Build application
+        run: npm run build
+        env:
+          VITE_API_ENDPOINT: ${{ secrets.API_ENDPOINT }}
+      
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+      
+      - name: Deploy CloudFormation stack
+        id: deploy-stack
+        run: |
+          # Check if stack exists
+          if aws cloudformation describe-stacks --stack-name ${{ env.STACK_NAME }} 2>&1 | grep -q "does not exist"; then
+            echo "Creating new stack..."
+            aws cloudformation create-stack \
+              --stack-name ${{ env.STACK_NAME }} \
+              --template-body file://infrastructure/cloudformation-template.yaml \
+              --capabilities CAPABILITY_IAM \
+              --parameters \
+                ParameterKey=DomainName,ParameterValue=mrandall.me \
+                ParameterKey=ContactEmail,ParameterValue=me@mrandall.me
+            
+            echo "Waiting for stack creation to complete..."
+            aws cloudformation wait stack-create-complete --stack-name ${{ env.STACK_NAME }}
+          else
+            echo "Updating existing stack..."
+            aws cloudformation update-stack \
+              --stack-name ${{ env.STACK_NAME }} \
+              --template-body file://infrastructure/cloudformation-template.yaml \
+              --capabilities CAPABILITY_IAM \
+              --parameters \
+                ParameterKey=DomainName,ParameterValue=mrandall.me \
+                ParameterKey=ContactEmail,ParameterValue=me@mrandall.me \
+              2>&1 | tee update-output.txt || true
+            
+            # Check if update was needed
+            if grep -q "No updates are to be performed" update-output.txt; then
+              echo "No CloudFormation updates needed"
+            else
+              echo "Waiting for stack update to complete..."
+              aws cloudformation wait stack-update-complete --stack-name ${{ env.STACK_NAME }}
+            fi
+          fi
+          
+          # Get outputs
+          BUCKET_NAME=$(aws cloudformation describe-stacks \
+            --stack-name ${{ env.STACK_NAME }} \
+            --query 'Stacks[0].Outputs[?OutputKey==`WebsiteBucketName`].OutputValue' \
+            --output text)
+          
+          DISTRIBUTION_ID=$(aws cloudformation describe-stacks \
+            --stack-name ${{ env.STACK_NAME }} \
+            --query 'Stacks[0].Outputs[?OutputKey==`CloudFrontDistributionId`].OutputValue' \
+            --output text)
+          
+          API_ENDPOINT=$(aws cloudformation describe-stacks \
+            --stack-name ${{ env.STACK_NAME }} \
+            --query 'Stacks[0].Outputs[?OutputKey==`ContactFormApiEndpoint`].OutputValue' \
+            --output text)
+          
+          echo "BUCKET_NAME=${BUCKET_NAME}" >> $GITHUB_OUTPUT
+          echo "DISTRIBUTION_ID=${DISTRIBUTION_ID}" >> $GITHUB_OUTPUT
+          echo "API_ENDPOINT=${API_ENDPOINT}" >> $GITHUB_OUTPUT
+          
+          echo "✅ Stack deployment completed"
+          echo "📦 Bucket: ${BUCKET_NAME}"
+          echo "🌐 Distribution: ${DISTRIBUTION_ID}"
+          echo "🔌 API: ${API_ENDPOINT}"
+      
+      - name: Update Lambda function code
+        run: |
+          # Create deployment package
+          cd infrastructure/lambda
+          zip -r function.zip contact-form.js
+          
+          # Update Lambda function
+          aws lambda update-function-code \
+            --function-name mrandall.me-contact-form \
+            --zip-file fileb://function.zip
+          
+          echo "✅ Lambda function updated"
+      
+      - name: Sync files to S3
+        run: |
+          aws s3 sync dist/ s3://${{ steps.deploy-stack.outputs.BUCKET_NAME }} \
+            --delete \
+            --cache-control "public, max-age=31536000, immutable" \
+            --exclude "index.html"
+          
+          # Upload index.html with shorter cache
+          aws s3 cp dist/index.html s3://${{ steps.deploy-stack.outputs.BUCKET_NAME }}/index.html \
+            --cache-control "public, max-age=0, must-revalidate"
+          
+          echo "✅ Files synced to S3"
+      
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id ${{ steps.deploy-stack.outputs.DISTRIBUTION_ID }} \
+            --paths "/*"
+          
+          echo "✅ CloudFront cache invalidated"
+      
+      - name: Deployment summary
+        run: |
+          echo "🎉 Deployment completed successfully!"
+          echo ""
+          echo "📊 Deployment Details:"
+          echo "  • Stack: ${{ env.STACK_NAME }}"
+          echo "  • Region: ${{ env.AWS_REGION }}"
+          echo "  • S3 Bucket: ${{ steps.deploy-stack.outputs.BUCKET_NAME }}"
+          echo "  • CloudFront Distribution: ${{ steps.deploy-stack.outputs.DISTRIBUTION_ID }}"
+          echo "  • API Endpoint: ${{ steps.deploy-stack.outputs.API_ENDPOINT }}"
+          echo ""
+          echo "🌍 Your site will be available at: https://mrandall.me"
+          echo ""
+          echo "⏰ Note: DNS propagation may take a few minutes"
+
