@@ -1,0 +1,13 @@
+{
+  "name": "contact-form-lambda",
+  "version": "1.0.0",
+  "description": "Lambda function for contact form email handling",
+  "main": "contact-form.js",
+  "dependencies": {
+    "@aws-sdk/client-ses": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
+
