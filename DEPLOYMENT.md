@@ -222,7 +222,7 @@ This setup should cost approximately **$0.50-$5/month** depending on traffic:
 
 **Lambda Logs:**
 ```bash
-aws logs tail /aws/lambda/mrandall.me-contact-form --follow
+aws logs tail /aws/lambda/mrandall-me-contact-form --follow
 ```
 
 **CloudFormation Events:**
@@ -254,7 +254,7 @@ cd infrastructure/lambda
 zip -r function.zip contact-form.js
 
 aws lambda update-function-code \
-  --function-name mrandall.me-contact-form \
+  --function-name mrandall-me-contact-form \
   --zip-file fileb://function.zip
 ```
 

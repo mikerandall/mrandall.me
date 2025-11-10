@@ -156,7 +156,7 @@ VITE_API_ENDPOINT=<api-endpoint-from-above>
 ### Contact form not working
 ```bash
 # Check Lambda logs
-aws logs tail /aws/lambda/mrandall.me-contact-form --follow
+aws logs tail /aws/lambda/mrandall-me-contact-form --follow
 
 # Verify email
 # AWS Console → SES → Verified identities → me@mrandall.me (should be green)

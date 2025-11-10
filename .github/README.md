@@ -183,7 +183,7 @@ npm run build
 
 Check Lambda function exists:
 ```bash
-aws lambda get-function --function-name mrandall.me-contact-form
+aws lambda get-function --function-name mrandall-me-contact-form
 ```
 
 ### CloudFront invalidation fails

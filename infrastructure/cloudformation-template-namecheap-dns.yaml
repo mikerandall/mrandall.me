@@ -147,7 +147,7 @@ Resources:
   ContactFormLambda:
     Type: AWS::Lambda::Function
     Properties:
-      FunctionName: !Sub '${DomainName}-contact-form'
+      FunctionName: mrandall-me-contact-form
       Runtime: nodejs20.x
       Handler: index.handler
       Role: !GetAtt ContactFormLambdaRole.Arn

@@ -126,7 +126,7 @@ User → Namecheap DNS → CloudFront (CDN) → S3 (Static Files)
 ./infrastructure/get-outputs.sh
 
 # View Lambda logs
-aws logs tail /aws/lambda/mrandall.me-contact-form --follow
+aws logs tail /aws/lambda/mrandall-me-contact-form --follow
 
 # Manual deploy
 npm run build
@@ -180,7 +180,7 @@ aws acm list-certificates --region us-east-1
 ### Contact form returns error
 ```bash
 # Check Lambda logs
-aws logs tail /aws/lambda/mrandall.me-contact-form --follow
+aws logs tail /aws/lambda/mrandall-me-contact-form --follow
 
 # Verify SES email is verified
 aws ses get-identity-verification-attributes \

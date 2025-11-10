@@ -109,7 +109,7 @@ if [ -n "$BUCKET_NAME" ]; then
 fi
 
 echo "View Lambda logs:"
-echo "  aws logs tail /aws/lambda/mrandall.me-contact-form --follow"
+echo "  aws logs tail /aws/lambda/mrandall-me-contact-form --follow"
 echo ""
 
 echo "Check certificate status:"

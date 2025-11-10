@@ -75,7 +75,7 @@ aws cloudformation update-stack \
 cd infrastructure/lambda
 zip -r function.zip contact-form.js
 aws lambda update-function-code \
-  --function-name mrandall.me-contact-form \
+  --function-name mrandall-me-contact-form \
   --zip-file fileb://function.zip \
   --region us-east-1
 ```
@@ -83,7 +83,7 @@ aws lambda update-function-code \
 ### View Lambda Logs
 
 ```bash
-aws logs tail /aws/lambda/mrandall.me-contact-form --follow --region us-east-1
+aws logs tail /aws/lambda/mrandall-me-contact-form --follow --region us-east-1
 ```
 
 ## Architecture
