@@ -52,11 +52,12 @@ jobs:
             echo "Creating new stack..."
             aws cloudformation create-stack \
               --stack-name ${{ env.STACK_NAME }} \
-              --template-body file://infrastructure/cloudformation-template-no-cert.yaml \
+              --template-body file://infrastructure/cloudformation-template-with-custom-domain.yaml \
               --capabilities CAPABILITY_IAM \
               --parameters \
                 ParameterKey=DomainName,ParameterValue=mrandall.me \
-                ParameterKey=ContactEmail,ParameterValue=me@mrandall.me
+                ParameterKey=ContactEmail,ParameterValue=me@mrandall.me \
+                ParameterKey=CertificateArn,ParameterValue=arn:aws:acm:us-east-1:311141537718:certificate/0f393ebd-be48-4806-b082-06f39a4947da
             
             echo "Waiting for stack creation to complete..."
             aws cloudformation wait stack-create-complete --stack-name ${{ env.STACK_NAME }}
@@ -64,11 +65,12 @@ jobs:
             echo "Updating existing stack..."
             aws cloudformation update-stack \
               --stack-name ${{ env.STACK_NAME }} \
-              --template-body file://infrastructure/cloudformation-template-no-cert.yaml \
+              --template-body file://infrastructure/cloudformation-template-with-custom-domain.yaml \
               --capabilities CAPABILITY_IAM \
               --parameters \
                 ParameterKey=DomainName,ParameterValue=mrandall.me \
                 ParameterKey=ContactEmail,ParameterValue=me@mrandall.me \
+                ParameterKey=CertificateArn,ParameterValue=arn:aws:acm:us-east-1:311141537718:certificate/0f393ebd-be48-4806-b082-06f39a4947da \
               2>&1 | tee update-output.txt || true
             
             # Check if update was needed
