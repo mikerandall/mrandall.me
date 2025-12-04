@@ -37,21 +37,30 @@ const About = () => {
         <h2 className="section-title">About</h2>
         
         <div className="about-content">
-          <p className="about-text">
-            Influential, trusted tech leader with extensive healthcare leadership in Startups 
-            and Fortune 500 companies. As a Software Engineering Director & Senior Full Stack Engineer, 
-            I bring expertise in diverse coding languages and cloud architectures.
+          <p className="about-text about-lead">
+            I partner with healthcare organizations as a fractional CTO to solve their toughest 
+            technology challenges—from clinical trial platforms to payer systems.
           </p>
           <p className="about-text">
-            Known for architecting quality solutions for healthcare and enterprise clients, managing 
-            Protected Health Info (EHR) and Clinical Trial Data. My track record includes replacing 
-            legacy apps, securing millions in funding, and significantly improving team velocity.
+            My track record speaks through results: <strong>millions of dollars in funding secured</strong> for products 
+            I built, <strong>7x velocity improvements</strong> for engineering teams I led, and <strong>30% 
+            infrastructure cost reductions</strong> through smart architecture decisions.
           </p>
           <p className="about-text">
-            I excel at driving impactful initiatives with ambiguous requirements using a "get it done" 
-            approach, leading large globally distributed teams, and ensuring stable code with consistent 
-            releases in rapidly changing environments.
+            With deep expertise in <strong>Protected Health Information (PHI)</strong>, <strong>EHR/EMR 
+            systems</strong>, <strong>HL7/CCDA standards</strong>, and <strong>clinical trial data</strong>, 
+            I understand the unique compliance and integration challenges healthcare organizations face.
           </p>
+        </div>
+
+        <div className="trust-signals">
+          <p className="trust-label">Trusted by teams at</p>
+          <div className="trust-logos">
+            <span className="trust-logo">Cigna</span>
+            <span className="trust-logo">WCG</span>
+            <span className="trust-logo">CGI</span>
+            <span className="trust-logo">Diameter Health</span>
+          </div>
         </div>
 
         <div className="about-stats">

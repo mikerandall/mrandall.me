@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
+import Services from './components/Services'
 import About from './components/About'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
@@ -19,6 +20,7 @@ function App() {
       <Navigation />
       <main>
         <Hero />
+        <Services />
         <About />
         <Experience />
         <Skills />

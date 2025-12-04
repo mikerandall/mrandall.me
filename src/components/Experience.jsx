@@ -29,13 +29,13 @@ const Experience = () => {
     {
       title: 'Cigna - Contract Strategy ($90B Platform)',
       period: 'Nov 2020 - April 2022',
-      description: 'Led team of 10+ developers building contract strategy tool handling $90B of Cigna\'s business. Architected application with AWS SNS/SQS for async updates and implemented real-time websocket communication for collaboration.',
+      description: 'Led team of 10+ developers building contract strategy tool handling $90B of Cigna\'s business. Architected application with asynchronous updates and implemented real-time websocket communication for collaboration and real-time access controls.',
       technologies: ['React', 'React UI', 'AWS', 'SNS', 'SQS', 'WebSockets', 'Jest']
     },
     {
       title: 'Cigna - Client Management Platform (CMP)',
       period: 'Jan 2020 - Nov 2020',
-      description: 'Developed Story Builder combining analytics metrics into graphs and PowerPoint documents. Built AWS Lambda microservices using Sequelize with Postgres on RDS. Frontend developed in Angular 10 with Tailwind, Material UI, Bootstrap, and PrimeNg.',
+      description: 'Developed Story Builder, combining analytics metrics into graphs and PowerPoint documents. Built AWS Lambda microservices using Sequelize with Postgres on RDS. Frontend developed in Angular 10 with Tailwind, Material UI, Bootstrap, and PrimeNg.',
       technologies: ['Angular', 'AWS Lambda', 'Sequelize', 'PostgreSQL', 'Tailwind', 'Material UI']
     },
     {
@@ -98,23 +98,17 @@ const Experience = () => {
 
           <div className="cgi-overview">
             <ul className="cgi-highlights">
-              <li>Led and scaled teams across multiple enterprise-level projects (up to 40+ developers), improving output and velocity while formalizing SDLC and CI/CD processes.</li>
-              <li>Architected and delivered critical applications for both healthcare and clinical trial platforms using modern stacks like FastAPI, Angular, React, AWS, and Kafka.</li>
               <li>Successfully launched a $10M+ funded product (eReviewManager) for WCG, replacing legacy systems with a scalable, real-time web application.</li>
               <li>Cut infrastructure costs and improved engineering efficiency at Cigna by consolidating tools, improving team velocity, and reducing AWS spend by 30%.</li>
+              <li>Trusted leader working cross-functionally with board-members, leadership, stakeholders, and globally distributed teams.</li>
+              <li>Led and scaled teams across multiple enterprise-level projects (up to 40+ developers), improving output and velocity while formalizing SDLC and CI/CD processes.</li>
+              <li>Architected and delivered critical applications for both healthcare and clinical trial platforms using modern stacks like FastAPI, Angular, React, AWS, and Kafka.</li>
               <li>Implemented advanced tech solutions, including real-time collaboration via websockets, microservices with AWS Lambda, and role-based access control.</li>
             </ul>
           </div>
 
-          <button 
-            className="expand-button"
-            onClick={() => setExpandedCGI(!expandedCGI)}
-            aria-label={expandedCGI ? "Collapse projects" : "Expand projects"}
-          >
-            {expandedCGI ? '−' : '+'} {cgiProjects.length} Projects
-          </button>
 
-          <div className={`cgi-projects ${expandedCGI ? 'expanded' : ''}`}>
+          <div className={`cgi-projects expanded`}>
             {cgiProjects.map((project, index) => (
               <div key={index} className="cgi-project">
                 <div className="project-header">

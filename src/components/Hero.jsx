@@ -37,22 +37,33 @@ const Hero = () => {
     document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const scrollToServices = () => {
+    document.getElementById('services')?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <section id="hero" className="hero" ref={heroRef}>
       <div className="hero-container">
-        <h1 className="hero-title" ref={titleRef}>
+        <span className="hero-eyebrow" ref={titleRef}>Available for Engagements</span>
+        <h1 className="hero-title">
           Michael Randall
         </h1>
         <p className="hero-subtitle" ref={subtitleRef}>
-          Engineering Leader
+          Fractional CTO for Healthcare, Insurance, & Beyond
         </p>
         <p className="hero-description" ref={descRef}>
-          Driving scalable web solutions in healthcare & enterprise.<br />
-          17+ years leading teams, securing funding, and delivering results.
+          I help healthcare startups and organizations modernize legacy systems, 
+          build high-performing engineering teams, and ship HIPAA-compliant products—without 
+          the full-time executive cost.
         </p>
-        <button className="hero-cta" onClick={scrollToContact}>
-          Get In Touch →
-        </button>
+        <div className="hero-ctas">
+          <button className="hero-cta hero-cta-primary" onClick={scrollToContact}>
+            Schedule a Consultation →
+          </button>
+          <button className="hero-cta hero-cta-secondary" onClick={scrollToServices}>
+            View Services
+          </button>
+        </div>
       </div>
     </section>
   )

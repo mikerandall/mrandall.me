@@ -37,12 +37,12 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'Frontend Development',
+      title: 'AI & Machine Learning',
       skills: [
-        { name: 'React', level: 95 },
-        { name: 'Angular', level: 93 },
-        { name: 'JavaScript/TypeScript', level: 98 },
-        { name: 'HTML/CSS', level: 95 }
+        { name: 'LangChain/LLM Integration', level: 90 },
+        { name: 'RAG Systems', level: 92 },
+        { name: 'Vector Databases (Qdrant)', level: 88 },
+        { name: 'Model Fine-tuning (LoRA)', level: 85 }
       ]
     },
     {
@@ -55,6 +55,15 @@ const Skills = () => {
       ]
     },
     {
+      title: 'Frontend Development',
+      skills: [
+        { name: 'React', level: 95 },
+        { name: 'Angular', level: 93 },
+        { name: 'JavaScript/TypeScript', level: 98 },
+        { name: 'HTML/CSS', level: 95 }
+      ]
+    },
+    {
       title: 'Cloud & DevOps',
       skills: [
         { name: 'AWS', level: 93 },
@@ -64,12 +73,12 @@ const Skills = () => {
       ]
     },
     {
-      title: 'Leadership & Process',
+      title: 'Leadership & Healthcare',
       skills: [
-        { name: 'Team Leadership', level: 98 },
-        { name: 'Agile/SDLC', level: 95 },
+        { name: 'Team Leadership (40+)', level: 98 },
+        { name: 'Healthcare/HIPAA', level: 92 },
         { name: 'Architecture Design', level: 95 },
-        { name: 'Healthcare/HIPAA', level: 92 }
+        { name: 'Agile/SDLC', level: 95 }
       ]
     }
   ]
