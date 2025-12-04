@@ -59,20 +59,34 @@ const Contact = () => {
   }
 
   const contactLinks = [
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/michaelrandall' },
-    { name: 'GitHub', url: 'https://github.com/mrandall' },
-    { name: 'Email', url: 'mailto:michael@mrandall.me' },
+    { name: 'LinkedIn', url: 'https://linkedin.com/in/mikerandall' },
+    { name: 'GitHub', url: 'https://github.com/mikerandall' },
+    { name: 'Email', url: 'mailto:me@mrandall.me' },
     { name: 'Resume (PDF)', url: '/Michael-Randall-Resume.pdf' }
   ]
 
   return (
     <section id="contact" className="contact" ref={sectionRef}>
       <div className="contact-container">
-        <h2 className="section-title">Get In Touch</h2>
+        <h2 className="section-title">Let's Solve Your Challenges</h2>
         <p className="contact-intro">
-          Available for engineering leadership roles and consulting opportunities. 
-          Let's discuss how I can help drive your next initiative.
+          Facing a legacy system nightmare? Need to scale your engineering team fast? 
+          Preparing for a funding round? Let's talk about how I can help.
         </p>
+
+        <div className="consultation-cta">
+          <button 
+            className="book-call-btn"
+            onClick={() => {
+              if (window.Calendly) {
+                window.Calendly.initPopupWidget({ url: 'https://calendly.com/mrandall-me/30min' })
+              }
+            }}
+          >
+            📅 Book a 30-Minute Call
+          </button>
+          <p className="consultation-note">Free initial consultation • No commitment required</p>
+        </div>
 
         <div className="contact-content">
           <div className="contact-links">
@@ -143,7 +157,7 @@ const Contact = () => {
         </div>
 
         <div className="contact-footer">
-          <p>© 2025 Michael Randall. Engineering Leader.</p>
+          <p>© 2025 Michael Randall. Fractional CTO for Healthcare.</p>
         </div>
       </div>
     </section>

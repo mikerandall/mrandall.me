@@ -7,7 +7,7 @@ const Navigation = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['hero', 'about', 'experience', 'skills', 'projects', 'contact']
+      const sections = ['hero', 'services', 'about', 'experience', 'skills', 'projects', 'contact']
       for (const section of sections) {
         const element = document.getElementById(section)
         if (element) {
@@ -34,6 +34,7 @@ const Navigation = () => {
 
   const navItems = [
     { id: 'hero', label: 'Home' },
+    { id: 'services', label: 'Services' },
     { id: 'about', label: 'About' },
     { id: 'experience', label: 'Experience' },
     { id: 'skills', label: 'Skills' },

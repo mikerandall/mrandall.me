@@ -16,7 +16,7 @@
 }
 
 .about-content {
-  margin-bottom: 60px;
+  margin-bottom: 48px;
 }
 
 .about-text {
@@ -26,8 +26,56 @@
   margin-bottom: 24px;
 }
 
+.about-text.about-lead {
+  font-size: 1.2rem;
+  color: var(--text-black);
+  font-weight: 500;
+}
+
+.about-text strong {
+  color: #006666;
+  font-weight: 600;
+}
+
 .about-text:last-child {
   margin-bottom: 0;
+}
+
+/* Trust Signals */
+.trust-signals {
+  text-align: center;
+  padding: 32px 0;
+  margin-bottom: 48px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.trust-label {
+  font-size: 0.85rem;
+  color: var(--text-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 20px;
+}
+
+.trust-logos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.trust-logo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-black);
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.trust-logo:hover {
+  opacity: 1;
 }
 
 .about-stats {
