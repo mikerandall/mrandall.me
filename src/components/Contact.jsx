@@ -29,7 +29,7 @@ const Contact = () => {
     setSubmitStatus(null)
 
     try {
-      const apiEndpoint = import.meta.env.VITE_API_ENDPOINT || 'https://YOUR_API_ENDPOINT/prod/contact'
+      const apiEndpoint = import.meta.env.VITE_API_ENDPOINT || 'https://2fm5dvfg9d.execute-api.us-east-1.amazonaws.com/prod/contact'
       
       const response = await fetch(apiEndpoint, {
         method: 'POST',
