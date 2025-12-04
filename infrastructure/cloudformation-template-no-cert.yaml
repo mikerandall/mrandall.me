@@ -131,7 +131,7 @@ Resources:
     Properties:
       FunctionName: mrandall-me-contact-form
       Runtime: nodejs20.x
-      Handler: index.handler
+      Handler: contact-form.handler
       Role: !GetAtt ContactFormLambdaRole.Arn
       Timeout: 30
       Environment:
