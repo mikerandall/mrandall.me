@@ -91,7 +91,7 @@ const CaseStudies = () => {
       industry: 'Healthcare Interoperability',
       title: 'Multi-EHR Patient Record Consolidation',
       challenge: 'Healthcare organizations needed to consolidate patient records from multiple EHR systems into unified views. Data arrived in various formats (CCDA, HL7) with duplicates, inconsistencies, and varying quality levels.',
-      solution: 'Designed and built a de-duplication engine using Node.js and MongoDB that intelligently merged records from multiple EHRs. Processed complex medical data formats and normalized them into standardized patient records.',
+      solution: 'Developed a de-duplication engine using Node.js and MongoDB that intelligently merged records from multiple EHRs. Processed complex medical data formats and normalized them into standardized patient records.',
       outcome: [
         'Unified patient view across multiple EHRs',
         'Automated de-duplication reducing manual work',

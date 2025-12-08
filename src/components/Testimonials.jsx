@@ -51,11 +51,11 @@ const Testimonials = () => {
     },
     {
       id: 2,
-      quote: "Michael was instrumental in building out our development team. He led over 10 developers while managing relationships with 8 other applications—a complex integration requiring both technical and communication skills. His expertise helped align our team's strategy, and he cleared up process inefficiencies that had been holding us back.",
+      quote: "Michael was instrumental in building out our development team. He led over 10 developers, improving velocity by 7x while managing relationships with 8 other applications—a complex integration requiring both technical and communication skills. His expertise helped align our team's strategy, and he cleared up process inefficiencies that had been holding us back.",
       author: "Director of Product",
       company: "Cigna",
       context: "Analytics Platform Leadership",
-      highlight: "10+ developers led"
+      highlight: "7x velocity improvement"
     },
     {
       id: 3,
