@@ -98,7 +98,7 @@ const Services = () => {
           <h2 className="section-title">Fractional CTO Services</h2>
           <p className="services-intro">
             Get the strategic technology leadership your organization needs—without 
-            the $300K+ salary. I work with startups, health systems, and digital health and insurance companies 
+            the $300K+ salary. I work with startups, digital health systems, and insurance companies 
             to solve their toughest technical challenges.
           </p>
         </div>

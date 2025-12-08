@@ -65,7 +65,7 @@ const About = () => {
 
         <div className="about-stats">
           <div className="stat-item" ref={el => statsRef.current[0] = el}>
-            <div className="stat-number">17+</div>
+            <div className="stat-number">25+</div>
             <div className="stat-label">Years Experience</div>
           </div>
           <div className="stat-divider" />
