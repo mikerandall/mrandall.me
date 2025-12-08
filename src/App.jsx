@@ -2,6 +2,8 @@ import { useEffect } from 'react'
 import Navigation from './components/Navigation'
 import Hero from './components/Hero'
 import Services from './components/Services'
+import CaseStudies from './components/CaseStudies'
+import Testimonials from './components/Testimonials'
 import About from './components/About'
 import Experience from './components/Experience'
 import Skills from './components/Skills'
@@ -21,6 +23,8 @@ function App() {
       <main>
         <Hero />
         <Services />
+        <CaseStudies />
+        <Testimonials />
         <About />
         <Experience />
         <Skills />
