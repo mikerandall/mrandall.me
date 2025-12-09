@@ -35,8 +35,8 @@ const Services = () => {
     {
       icon: '🤖',
       title: 'AI & LLM Integration',
-      description: 'Build intelligent AI-powered features for healthcare applications. From ReAct agents to RAG systems, I architect production-ready AI solutions that understand medical context.',
-      highlights: ['LangChain agents', 'RAG systems', 'LLM fine-tuning', 'Vector databases']
+      description: 'Build intelligent AI-powered features for healthcare applications. From Agents to RAG systems, I architect production-ready AI solutions that understand medical context.',
+      highlights: ['Agents', 'LangChain & ReAct', 'RAG systems', 'LLM fine-tuning', 'Vector databases']
     },
     {
       icon: '🎯',
@@ -98,7 +98,7 @@ const Services = () => {
           <h2 className="section-title">Fractional CTO Services</h2>
           <p className="services-intro">
             Get the strategic technology leadership your organization needs—without 
-            the $300K+ salary. I work with startups, health systems, and digital health and insurance companies 
+            the $300K+ salary. I work with startups, digital health systems, and insurance companies 
             to solve their toughest technical challenges.
           </p>
         </div>
