@@ -85,6 +85,15 @@
   padding-left: 8px;
 }
 
+.resume-request-btn {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+}
+
 .contact-form {
   display: flex;
   flex-direction: column;
