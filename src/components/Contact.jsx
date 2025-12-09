@@ -7,11 +7,23 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Contact = () => {
   const sectionRef = useRef(null)
+  const nameInputRef = useRef(null)
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
   })
+
+  const handleResumeRequest = () => {
+    setFormData(prev => ({
+      ...prev,
+      message: 'Please send me your resume!'
+    }))
+    // Focus the name input after a brief delay to allow state update
+    setTimeout(() => {
+      nameInputRef.current?.focus()
+    }, 100)
+  }
 
   const handleChange = (e) => {
     setFormData({
@@ -61,8 +73,7 @@ const Contact = () => {
   const contactLinks = [
     { name: 'LinkedIn', url: 'https://linkedin.com/in/mikerandall' },
     { name: 'GitHub', url: 'https://github.com/mikerandall' },
-    { name: 'Email', url: 'mailto:me@mrandall.me' },
-    { name: 'Resume (PDF)', url: '/Michael-Randall-Resume.pdf' }
+    { name: 'Email', url: 'mailto:me@mrandall.me' }
   ]
 
   return (
@@ -101,6 +112,13 @@ const Contact = () => {
                 {link.name} →
               </a>
             ))}
+            <button
+              type="button"
+              className="contact-link resume-request-btn"
+              onClick={handleResumeRequest}
+            >
+              Resume →
+            </button>
           </div>
 
           <form className="contact-form" onSubmit={handleSubmit}>
@@ -116,6 +134,7 @@ const Contact = () => {
                   type="text"
                   id="name"
                   name="name"
+                  ref={nameInputRef}
                   value={formData.name}
                   onChange={handleChange}
                   required
