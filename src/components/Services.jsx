@@ -35,8 +35,8 @@ const Services = () => {
     {
       icon: '🤖',
       title: 'AI & LLM Integration',
-      description: 'Build intelligent AI-powered features for healthcare applications. From ReAct agents to RAG systems, I architect production-ready AI solutions that understand medical context.',
-      highlights: ['LangChain agents', 'RAG systems', 'LLM fine-tuning', 'Vector databases']
+      description: 'Build intelligent AI-powered features for healthcare applications. From Agents to RAG systems, I architect production-ready AI solutions that understand medical context.',
+      highlights: ['Agents', 'LangChain & ReAct', 'RAG systems', 'LLM fine-tuning', 'Vector databases']
     },
     {
       icon: '🎯',

@@ -110,7 +110,6 @@ const CaseStudies = () => {
           <h2 className="section-title">Proven Results</h2>
           <p className="case-studies-intro">
             Real-world healthcare technology challenges I've solved. 
-            Client names anonymized where required by NDA.
           </p>
         </div>
 

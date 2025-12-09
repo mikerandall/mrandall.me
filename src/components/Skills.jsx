@@ -37,12 +37,12 @@ const Skills = () => {
 
   const skillCategories = [
     {
-      title: 'AI & Machine Learning',
+      title: 'AI & Agent Integration',
       skills: [
         { name: 'LangChain/LLM Integration', level: 90 },
-        { name: 'RAG Systems', level: 92 },
-        { name: 'Vector Databases (Qdrant)', level: 88 },
-        { name: 'Model Fine-tuning (LoRA)', level: 85 }
+        { name: 'Agentic Architecture', level: 92 },
+        { name: 'RAG Systems', level: 88 },
+        { name: 'Vector Databases (Qdrant)', level: 85 },
       ]
     },
     {
